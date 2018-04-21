@@ -1,0 +1,25 @@
+---
+-
+  connection: local
+  gather_facts: false
+  hosts: switch
+  tasks:
+    -
+      include_vars: ../secrets.yaml
+      name: "Include Login Credentials"
+    -
+      name: "Define Provider"
+      set_fact:
+        provider:
+          host: "{{ ansible_host }}"
+          password: "{{ creds['password'] }}"
+          username: "{{ creds['username'] }}"
+    -
+      name: run show VLAN
+      ios_command:
+        commands:
+          - show vlan brief
+        provider: "{{ provider }}"
+      register: show_vlan
+    -
+      debug: var=show_vlan.stdout_lines
