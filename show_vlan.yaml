@@ -13,7 +13,7 @@
         provider:
           host: "{{ ansible_host }}"
           password: "{{ password }}"
-          username: "{{ username] }}"
+          username: "{{ username }}"
     -
       name: run show VLAN
       ios_command:
