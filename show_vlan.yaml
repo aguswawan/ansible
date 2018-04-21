@@ -12,8 +12,8 @@
       set_fact:
         provider:
           host: "{{ ansible_host }}"
-          password: "{{ creds['password'] }}"
-          username: "{{ creds['username'] }}"
+          password: "{{ password }}"
+          username: "{{ username] }}"
     -
       name: run show VLAN
       ios_command:
